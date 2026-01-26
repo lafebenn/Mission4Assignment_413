@@ -56,7 +56,37 @@ while (gameOver == false)
     board[p2ChoiceInt] = "O";
 
 
+    // pass board to T2, if winner, set gameOver to true
+
+
+    if (t2.isWinner(board) == 1)
+    {
+        gameOver = true;
+        Console.WriteLine("Player 1 wins!");
+    }
+
+    if (t2.isWinner(board) == 2)
+    {
+        gameOver = true;
+        Console.WriteLine("Player 2 wins!");
+    }
+
+    if (t2.isWinner(board) == 3)
+    {
+        gameOver = true;
+        Console.WriteLine("It's a tie!");
+    }
+
+
+
+
+
 
 }
+
+// print final board and thank you message
+Console.WriteLine("Final Board:");
+t2.PrintBoard(board);
+Console.WriteLine("Thanks for playing!");
 
 
