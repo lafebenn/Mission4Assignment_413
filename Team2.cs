@@ -1,21 +1,30 @@
 namespace Mission4_Assignment;
 
+
+
 internal class Team2
 {
-    public string playerChoice(string playerName)
+    string board = "123456789XO";
+    public bool ValidInput(string input)
     {
-        string output = "";
-        string playerSymbol = "";
+        // convert to integer
+        int choice;
+        bool isNumber = int.TryParse(input, out choice);
         
-        if (playerName == "Player1")
+        if (isNumber == false)
         {
-            playerSymbol = "X";
+            return false;
         }
-        else
+        // check range
+        if (choice < 1 || choice > 9)
         {
-            playerSymbol = "O";
+            return false;
         }
-
-        return output;
+        return true;
     }
+    
+    if ((board[0]))
 }
+
+
+
