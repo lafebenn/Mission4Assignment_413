@@ -29,13 +29,31 @@ while (gameOver == false)
     string p1Choice = Console.ReadLine();
 
     // validate input
-    while(t2.ValidInput() == false)
+    while (t2.ValidInput(p1Choice, board) == false)
     {
-        Console.WriteLine("Invalid input. Please choose a position (1-9): ");
         p1Choice = Console.ReadLine();
     }
 
     // update board
+    int p1ChoiceInt = int.Parse(p1Choice) - 1;
+    board[p1ChoiceInt] = "X";
+
+    // ==================================================
+
+    // player 2 turn
+    Console.WriteLine("Player 2, choose a position (1-9): ");
+    t2.PrintBoard(board);
+    string p2Choice = Console.ReadLine();
+
+    // validate input
+    while (t2.ValidInput(p2Choice, board) == false)
+    {
+        p2Choice = Console.ReadLine();
+    }
+
+    // update board
+    int p2ChoiceInt = int.Parse(p2Choice) - 1;
+    board[p2ChoiceInt] = "O";
 
 
 
