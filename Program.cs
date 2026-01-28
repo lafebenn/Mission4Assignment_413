@@ -52,43 +52,47 @@ while (gameOver == false)
         
         // End the loop
         gameOver = true;
-        break;
 
     }
 
     // ==================================================
     // player 2 turn
-    Console.WriteLine();
-    Console.WriteLine("Player 2, choose a position (1-9): ");
-    Console.WriteLine();
-    t2.PrintBoard(board);
-    Console.WriteLine();
-    string p2Choice = Console.ReadLine();
 
-    // validate input
-    while (t2.ValidInput(p2Choice, board) == false)
+    // only take turn if game isn't over
+    if (gameOver == false)
     {
-        p2Choice = Console.ReadLine();
-    }
 
-    // update board & check for winner
-    int p2ChoiceInt = int.Parse(p2Choice) - 1;
-    board[p2ChoiceInt] = "O";
-    
-    Console.WriteLine();
-    result = t2.IsWinner(board);
-    
-    // Return if string isn't empty (winner or tie)
-    if (result != "")
-    {
-        // Print final message
         Console.WriteLine();
-        Console.WriteLine(result);
-        
-        // End the loop
-        gameOver = true;
-        break;
+        Console.WriteLine("Player 2, choose a position (1-9): ");
+        Console.WriteLine();
+        t2.PrintBoard(board);
+        Console.WriteLine();
+        string p2Choice = Console.ReadLine();
 
+        // validate input
+        while (t2.ValidInput(p2Choice, board) == false)
+        {
+            p2Choice = Console.ReadLine();
+        }
+
+        // update board & check for winner
+        int p2ChoiceInt = int.Parse(p2Choice) - 1;
+        board[p2ChoiceInt] = "O";
+
+        Console.WriteLine();
+        result = t2.IsWinner(board);
+
+        // Return if string isn't empty (winner or tie)
+        if (result != "")
+        {
+            // Print final message
+            Console.WriteLine();
+            Console.WriteLine(result);
+
+            // End the loop
+            gameOver = true;
+
+        }
     }
 }
 
