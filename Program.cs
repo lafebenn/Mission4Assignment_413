@@ -1,5 +1,4 @@
-﻿
-using Mission4_Assignment;
+﻿using Mission4_Assignment;
 
 // initialize variables
 string[] board = new string[9];
@@ -16,16 +15,19 @@ Team2 t2 = new Team2();
 
 
 // =======================================================
-
 // begin game
-
+Console.Clear();
+Console.WriteLine();
 Console.WriteLine("Welcome to Group 4-3's Tic-Tac-Toe!");
 
 while (gameOver == false)
 {
     // player 1 turn
+    Console.WriteLine();
     Console.WriteLine("Player 1, choose a position (1-9): ");
+    Console.WriteLine();
     t2.PrintBoard(board);
+    Console.WriteLine();
     string p1Choice = Console.ReadLine();
 
     // validate input
@@ -34,15 +36,33 @@ while (gameOver == false)
         p1Choice = Console.ReadLine();
     }
 
-    // update board
+    // update board & check for winner
     int p1ChoiceInt = int.Parse(p1Choice) - 1;
     board[p1ChoiceInt] = "X";
+    
+    Console.WriteLine();
+    string result = t2.IsWinner(board);
+
+    // Return if string isn't empty (winner or tie)
+    if (result != "")
+    {
+        // Print final message
+        Console.WriteLine();
+        Console.WriteLine(result);
+        
+        // End the loop
+        gameOver = true;
+        break;
+
+    }
 
     // ==================================================
-
     // player 2 turn
+    Console.WriteLine();
     Console.WriteLine("Player 2, choose a position (1-9): ");
+    Console.WriteLine();
     t2.PrintBoard(board);
+    Console.WriteLine();
     string p2Choice = Console.ReadLine();
 
     // validate input
@@ -51,42 +71,30 @@ while (gameOver == false)
         p2Choice = Console.ReadLine();
     }
 
-    // update board
+    // update board & check for winner
     int p2ChoiceInt = int.Parse(p2Choice) - 1;
     board[p2ChoiceInt] = "O";
-
-
-    // pass board to T2, if winner, set gameOver to true
-
-
-    if (t2.isWinner(board) == 1)
+    
+    Console.WriteLine();
+    result = t2.IsWinner(board);
+    
+    // Return if string isn't empty (winner or tie)
+    if (result != "")
     {
+        // Print final message
+        Console.WriteLine();
+        Console.WriteLine(result);
+        
+        // End the loop
         gameOver = true;
-        Console.WriteLine("Player 1 wins!");
+        break;
+
     }
-
-    if (t2.isWinner(board) == 2)
-    {
-        gameOver = true;
-        Console.WriteLine("Player 2 wins!");
-    }
-
-    if (t2.isWinner(board) == 3)
-    {
-        gameOver = true;
-        Console.WriteLine("It's a tie!");
-    }
-
-
-
-
-
-
 }
 
 // print final board and thank you message
+Console.WriteLine();
 Console.WriteLine("Final Board:");
 t2.PrintBoard(board);
+Console.WriteLine();
 Console.WriteLine("Thanks for playing!");
-
-
